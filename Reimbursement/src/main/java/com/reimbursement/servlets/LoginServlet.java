@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reimbursement.beans.Authentication;
@@ -25,28 +26,35 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("in doPost of LoginServlet");
 		PrintWriter out= response.getWriter();
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		boolean resp=false;
 		ObjectMapper om = new ObjectMapper();
 		Authentication authenticate = om.readValue(request.getInputStream(), Authentication.class);
 		
+		
 		try {
-			System.out.println(authenticate.getUsername());
-			System.out.println(authenticate.getPassword());
+			String username = authenticate.getUsername();
+			String password = authenticate.getPassword();
+			System.out.println(username);
+			System.out.println(password);
 			
-			out.print(authenticate.getUsername()+authenticate.getPassword());
+			if(password.equals("admin123")) {
+				resp=true;
+				out.print(resp);
+				HttpSession session= request.getSession();
+				session.setAttribute("name",username);
+			}else {
+				out.print(resp);
+			}
+			
 		}catch(NullPointerException e) {
-			e.printStackTrace();
+			out.print(resp);
 		}
 		
-		/*
-		if(password.equals("admin123")) {
-			out.print("Welcome, "+ username);
-			HttpSession session= request.getSession();
-			session.setAttribute("name",username);
-		}else {
-			out.print("Sorry, username or password error!");
-			request.getRequestDispatcher("login.html").include(request, response);
-		}
-		*/
+
+
+
 		out.close();
 		//response.sendRedirect("home");
 		//request.getRequestDispatcher("home.html").forward(request, response);
