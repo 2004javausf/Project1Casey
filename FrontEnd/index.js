@@ -1,8 +1,7 @@
 function loadPage(authenticate){
     if(authenticate==true){
-        //change page
+        window.location.href = "home.html";
     }else{
-        console.log(authenticate);
         document.getElementById("invalid").innerHTML="Invalid username or password. Please try again.";
     }
 

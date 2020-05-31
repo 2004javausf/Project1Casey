@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("in doPost of LoginServlet");
 		PrintWriter out= response.getWriter();
-		response.setContentType("application/json");
+		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		boolean resp=false;
 		ObjectMapper om = new ObjectMapper();
@@ -44,6 +44,8 @@ public class LoginServlet extends HttpServlet {
 				out.print(resp);
 				HttpSession session= request.getSession();
 				session.setAttribute("name",username);
+				//response.sendRedirect("home");
+				//request.getRequestDispatcher("home.html").forward(request, response);
 			}else {
 				out.print(resp);
 			}
@@ -52,9 +54,6 @@ public class LoginServlet extends HttpServlet {
 			out.print(resp);
 		}
 		
-
-
-
 		out.close();
 		//response.sendRedirect("home");
 		//request.getRequestDispatcher("home.html").forward(request, response);
