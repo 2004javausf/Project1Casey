@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.reimbursement.beans.Authentication;
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,12 +26,13 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("in doPost of LoginServlet");
 		PrintWriter out= response.getWriter();
 		ObjectMapper om = new ObjectMapper();
-		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		Authentication authenticate = om.readValue(request.getInputStream(), Authentication.class);
 		
 		try {
-			System.out.println(username+password);
+			System.out.println(authenticate.getUsername());
+			System.out.println(authenticate.getPassword());
+			
+			out.print(authenticate.getUsername()+authenticate.getPassword());
 		}catch(NullPointerException e) {
 			e.printStackTrace();
 		}
