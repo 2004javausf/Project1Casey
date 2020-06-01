@@ -37,7 +37,7 @@ public class RequestsDAOImpl {
 		ResultSet rs = p.executeQuery();
 		rs.next();
 		int today = rs.getInt(1);
-		if (today + 14 <= re.getDeadline()) {
+		if (today + 7 <= re.getDeadline()) {
 			return false;
 		}else {
 			return true;
