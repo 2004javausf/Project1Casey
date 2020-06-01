@@ -37,12 +37,20 @@ function logout(){
     console.log("cookie deleted");
     window.location.href = "index.html";
 }
+function form(){
+    window.location.href="form.html";
+}
+function date(){
+    window.location.href="date.html";
+}
 
 
 window.onload= function(){
     console.log("in onload");
     this.checkCookie();
     document.getElementById("logout").addEventListener("click",logout,false);
+    document.getElementById("form").addEventListener("click",form,false);
+    document.getElementById("date").addEventListener("click",date,false);
 }
 
 

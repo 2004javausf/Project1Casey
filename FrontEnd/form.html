@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Tuition Reimbursement Form</title>
+    </head>
+    <body>
+        <label for="cost">Amount cost:</label><br>
+        $<input type="number" id="cost" name="cost" onblur="check()"><br>
+        <label for="type">Type of event:</label><br>
+        <select id="event" name="event" onChange="formUpdate(this.selectedIndex);">
+        <option value="University Course">University Course</option>
+        <option value="Seminar">Seminar</option>
+        <option value="Certification Prep">Certification Prep</option>
+        <option value="Certification">Certification</option>
+        <option value="Technical Training">Technical Training</option>
+        <option value="Other">Other</option>
+        </select> <br>
+        <label for="date">Date of Event</label><br>
+        <input type="number" id="date" name="date"><br>
+        <input type="button" id="submit" name="submit" value="Submit Form">
+        <script type="text/javascript" src="form.js"></script>
+    </body>
+</html>
