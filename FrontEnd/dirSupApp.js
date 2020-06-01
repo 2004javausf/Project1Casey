@@ -56,4 +56,6 @@ window.onload= function(){
     console.log("in onload");
     this.checkCookie();
     this.getSupervisorTables();
+    document.getElementById("approve").addEventListener(click,approve,false);
+    document.getElementById("deny").addEventListener(click,deny,false);
 }

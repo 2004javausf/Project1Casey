@@ -51,4 +51,24 @@
     <servlet-name>GetSupervisorTables</servlet-name>
     <url-pattern>/getsupervisortables</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Approve</display-name>
+    <servlet-name>Approve</servlet-name>
+    <servlet-class>com.reimbursement.servlets.Approve</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Approve</servlet-name>
+    <url-pattern>/approve</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Deny</display-name>
+    <servlet-name>Deny</servlet-name>
+    <servlet-class>com.reimbursement.servlets.Deny</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Deny</servlet-name>
+    <url-pattern>/deny</url-pattern>
+  </servlet-mapping>
 </web-app>
