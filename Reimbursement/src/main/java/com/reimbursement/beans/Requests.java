@@ -20,8 +20,6 @@ public class Requests {
 		this.deadline = deadline;
 	}
 
-
-
 	public Requests(int id, String username, double request, int state, int deadline) {
 		super();
 		this.id = id;

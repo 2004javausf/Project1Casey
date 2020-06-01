@@ -50,7 +50,23 @@ INSERT INTO CURRENT_DATE VALUES(1);
 CREATE TABLE REQUESTS(
 REQ_ID INTEGER PRIMARY KEY,
 USERNAME VARCHAR2(20),
-REQ_AMT FLOAT,
+REQ_AMT NUMBER (38,2),
 PEND_STATE INTEGER,
 DEADLINE INTEGER);
 
+/*pending state cheatsheet:
+-1 denied
+0 to supervisor to approve
+1 to department head to approve
+2 to benco to approve
+3 waiting on user to give proof of grade
+4 to benco to approve
+5 to supervisor to approve
+6 paid out
+*/
+
+CREATE SEQUENCE ID_GEN
+START WITH 1
+INCREMENT BY 1;
+
+INSERT INTO REQUESTS VALUES(ID_GEN.NEXTVAL, 'garfield', 80.80, 0, 18);

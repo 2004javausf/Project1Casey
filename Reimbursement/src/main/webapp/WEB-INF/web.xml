@@ -21,4 +21,14 @@
     <servlet-name>ChangeDate</servlet-name>
     <url-pattern>/changedate</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NewRequest</display-name>
+    <servlet-name>NewRequest</servlet-name>
+    <servlet-class>com.reimbursement.servlets.NewRequest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewRequest</servlet-name>
+    <url-pattern>/newrequest</url-pattern>
+  </servlet-mapping>
 </web-app>
