@@ -1,5 +1,6 @@
 function loadPage(authenticate){
     if(authenticate==true){
+        document.cookie = "username=" + username+";path=/";
         window.location.href = "home.html";
     }else{
         document.getElementById("invalid").innerHTML="Invalid username or password. Please try again.";
@@ -10,7 +11,7 @@ function loadPage(authenticate){
 
 function getLogin(){
     console.log("in get Login");
-    let username= document.getElementById('username').value;
+    username= document.getElementById('username').value;
     let password= document.getElementById('password').value;
     //Step 1
     var xhr= new XMLHttpRequest();

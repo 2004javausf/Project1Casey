@@ -11,14 +11,4 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>LoggedIn</display-name>
-    <servlet-name>LoggedIn</servlet-name>
-    <servlet-class>com.reimbursement.servlets.LoggedIn</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoggedIn</servlet-name>
-    <url-pattern>/loggedIn</url-pattern>
-  </servlet-mapping>
 </web-app>

@@ -2,9 +2,9 @@ package com.reimbursement.beans;
 
 public class Authentication {
 	
-	private int id;
 	private String username;
 	private String password;
+	private int accountType;
 	
 	public Authentication(String username, String password) {
 		super();
@@ -12,20 +12,20 @@ public class Authentication {
 		this.password = password;
 	}
 	
-	public Authentication(int id, String username, String password) {
+	public Authentication(String username, String password, int accountType) {
 		super();
-		this.id = id;
+		this.accountType = accountType;
 		this.username = username;
 		this.password = password;
 	}
 	public Authentication() {
 		super();
 	}
-	public int getId() {
-		return id;
+	public int getAccountType() {
+		return accountType;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int accountType) {
+		this.accountType = accountType;
 	}
 	public String getUsername() {
 		return username;
@@ -42,7 +42,7 @@ public class Authentication {
 
 	@Override
 	public String toString() {
-		return "Authentication [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "Authentication [accountType=" + accountType + ", username=" + username + ", password=" + password + "]";
 	}
 	
 	
