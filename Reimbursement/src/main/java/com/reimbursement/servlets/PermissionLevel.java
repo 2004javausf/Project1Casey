@@ -10,42 +10,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.reimbursement.beans.Requests;
-import com.reimbursement.daoimpl.RequestsDAOImpl;
+import com.reimbursement.beans.Authentication;
+import com.reimbursement.daoimpl.AuthenticationDAOImpl;
 
-public class NewRequest extends HttpServlet {
+
+public class PermissionLevel extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public NewRequest() {
-        super();
-    }
-
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ObjectMapper om = new ObjectMapper();
-		PrintWriter pw = response.getWriter();
-		Requests newRequest = om.readValue(request.getInputStream(), Requests.class);
-		RequestsDAOImpl ri = new RequestsDAOImpl();
-		boolean overdrafted;
-		boolean overdue;
+		PrintWriter out = new PrintWriter(response.getWriter());
+		Authentication auth = om.readValue(request.getInputStream(), Authentication.class);
+		AuthenticationDAOImpl ad= new AuthenticationDAOImpl();
+		
 		try {
-			overdrafted = ri.isOverdrafted(newRequest);
-			overdue = ri.isOverdue(newRequest);
-			String tmp="";
-			tmp += om.writeValueAsString(overdrafted);
-			tmp += om.writeValueAsString(overdue);
-			if(!overdrafted && !overdue) {
-				ri.write(newRequest);
-			}
+			auth = ad.getPermissions(auth.getUsername());
+			String temp;
+			temp = om.writeValueAsString(auth.getAccountType());
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			pw.print(tmp);
+			out.print(temp);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

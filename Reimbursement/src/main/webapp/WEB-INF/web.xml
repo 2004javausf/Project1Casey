@@ -31,4 +31,14 @@
     <servlet-name>NewRequest</servlet-name>
     <url-pattern>/newrequest</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PermissionLevel</display-name>
+    <servlet-name>PermissionLevel</servlet-name>
+    <servlet-class>com.reimbursement.servlets.PermissionLevel</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PermissionLevel</servlet-name>
+    <url-pattern>/permissionlevel</url-pattern>
+  </servlet-mapping>
 </web-app>

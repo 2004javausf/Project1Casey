@@ -24,5 +24,18 @@ public class AuthenticationDAOImpl {
 		}
 		return auth;
 	}
+	
+	public Authentication getPermissions(String username) throws SQLException {
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM AUTHENTICATION WHERE USERNAME=?";
+		PreparedStatement p = conn.prepareStatement(sql);
+		p.setString(1, username);
+		ResultSet rs = p.executeQuery();
+		Authentication auth=null;
+		if (rs.next()) {
+			auth = new Authentication(rs.getString(1), rs.getString(2), rs.getInt(3));
+		}
+		return auth;
+	}
 
 }
